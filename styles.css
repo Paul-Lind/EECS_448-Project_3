@@ -19,6 +19,14 @@
     background-color: #441a03;
 }
 
+#sqr-tan:hover {
+    background-color: lightblue;
+}
+
+#sqr-red:hover {
+    background-color: lightblue;
+}
+
 #box {
     position: absolute;
     top: 35px;
