@@ -61,7 +61,37 @@ function placePieces() {
 /**
  * @author Konrad Kahnert
  * @return {void}
- * @description to be written
+ * @description Moves the piece in the tile specified by the old position to the tile specified by the new position
+ * */
+function movePiece(oldPosition, newPosition)
+{
+  board[newPosition] = board[oldPosition];
+
+  var selectedTileElement = document.getElementById(oldPosition);
+  selectedTileElement.removeChild(selectedTileElement.firstChild);
+
+  var pieceImage = document.createElement('img');
+
+  if (board[oldPosition] == 'r')
+  {
+    pieceImage.src = 'redPiece.png';
+  }
+  else if (board[oldPosition] == 'b')
+  {
+    pieceImage.src = 'blackPiece.png';
+  }
+
+  document.getElementById(newPosition).appendChild(pieceImage);
+
+  console.log("Placed " + board[oldPosition] + " piece at " + newPosition);
+  board[oldPosition] = 'e';
+  isPieceSelected = false;
+}
+
+/**
+ * @author Konrad Kahnert
+ * @return {void}
+ * @description If a piece is clicked, selects the piece. If an empty tile is clicked and a piece is selected, moves selected piece to that tile.
  * */
 function tileClicked()
 {
@@ -75,27 +105,7 @@ function tileClicked()
   }
   else if (isPieceSelected == true) // if player clicked empty tile and a piece is selected
   {
-    // move piece to empty tile
-    board[this.id] = board[selectedPiecePosition]
-
-    var selectedTileElement = document.getElementById(selectedPiecePosition);
-    selectedTileElement.removeChild(selectedTileElement.firstChild);
-
-    var pieceImage = document.createElement('img');
-
-    if (board[selectedPiecePosition] == 'r')
-    {
-      pieceImage.src = 'redPiece.png';
-    }
-    else if (board[selectedPiecePosition] == 'b')
-    {
-      pieceImage.src = 'blackPiece.png';
-    }
-
-    this.appendChild(pieceImage);
-
-    console.log("Placed " + board[selectedPiecePosition] + " piece at " + this.id);
-    board[selectedPiecePosition] = 'e';
-    isPieceSelected = false;
+    // move selected piece to empty tile
+    movePiece(selectedPiecePosition, this.id);
   }
 }
