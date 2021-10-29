@@ -82,30 +82,65 @@ function movePiece(oldPosition, newPosition)
   }
 
   document.getElementById(newPosition).appendChild(pieceImage);
-
-  console.log("Placed " + board[oldPosition] + " piece at " + newPosition);
   board[oldPosition] = 'e';
   isPieceSelected = false;
 }
 
 /**
  * @author Konrad Kahnert
+ * @return {bool}
+ * @description Returns true if moving a piece from oldPosition to newPosition is a valid move, returns false if it is not a valid move
+ * */
+function isMoveValid(oldPosition, newPosition)
+{
+  oldPosition = parseInt(oldPosition);
+  newPosition = parseInt(newPosition);
+
+  if (board[oldPosition] == 'r')
+  {
+    if ((newPosition == oldPosition - 9) || (newPosition == oldPosition - 7))
+    {
+      return(true);
+    }
+    else
+    {
+      return(false);
+    }
+  }
+  else
+  {
+    if ((newPosition == oldPosition + 9) || (newPosition == oldPosition + 7))
+    {
+      return(true);
+    }
+    else
+    {
+      return(false);
+    }
+  }
+}
+
+/**
+ * @author Konrad Kahnert
  * @return {void}
- * @description If a piece is clicked, selects the piece. If an empty tile is clicked and a piece is selected, moves selected piece to that tile.
+ * @description If a piece is clicked, selects the piece. If a piece is already selected and a valid empty tile piece is clicked, moves selected piece to that tile.
  * */
 function tileClicked()
 {
+  console.log("Clicked tile " + this.id);
+
   if (board[this.id] == 'r' || board[this.id] == 'b') // if player clicked piece
   {
     // select clicked piece
     isPieceSelected = true;
     selectedPiecePosition = this.id;
-
-    console.log("Selected Piece " + this.id);
   }
   else if (isPieceSelected == true) // if player clicked empty tile and a piece is selected
   {
     // move selected piece to empty tile
-    movePiece(selectedPiecePosition, this.id);
+    if (isMoveValid(selectedPiecePosition, this.id) == true)
+    {
+      movePiece(selectedPiecePosition, this.id);
+    }
   }
 }
