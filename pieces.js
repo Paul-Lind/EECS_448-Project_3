@@ -70,15 +70,41 @@ function movePiece(oldPosition, newPosition)
   var selectedTileElement = document.getElementById(oldPosition);
   selectedTileElement.removeChild(selectedTileElement.firstChild);
 
+  var newPosOnBoard = parseInt(newPosition);
+
   var pieceImage = document.createElement('img');
 
   if (board[oldPosition] == 'r')
   {
-    pieceImage.src = 'redPiece.png';
+    if (newPosOnBoard < 8)
+    {
+      pieceImage.src = 'redKingPiece.png';
+      board[newPosition] = 'rk';
+    }
+    else
+    {
+      pieceImage.src = 'redPiece.png';
+    }
   }
   else if (board[oldPosition] == 'b')
   {
-    pieceImage.src = 'blackPiece.png';
+    if (newPosOnBoard > 55)
+    {
+      pieceImage.src = 'blackKingPiece.png';
+      board[newPosition] = 'bk';
+    }
+    else
+    {
+      pieceImage.src = 'blackPiece.png';
+    }
+  }
+  else if (board[oldPosition] == 'bk')
+  {
+    pieceImage.src = 'blackKingPiece.png';
+  }
+  else if (board[oldPosition] == 'rk')
+  {
+    pieceImage.src = 'redKingPiece.png';
   }
 
   document.getElementById(newPosition).appendChild(pieceImage);
@@ -113,9 +139,24 @@ function isMoveValid(oldPosition, newPosition)
       return(false);
     }
   }
-  else
+  else if (board[oldPosition] == 'b')
   {
     if ((newPosition == oldPosition + 9) || (newPosition == oldPosition + 7))
+    {
+      if (classNewPos == "sqr-tan")
+      {
+        return(false);
+      }
+      return(true);
+    }
+    else
+    {
+      return(false);
+    }
+  }
+  else if (board[oldPosition] == 'rk' || board[oldPosition] == 'bk')
+  {
+    if ((newPosition == oldPosition + 9) || (newPosition == oldPosition + 7) || (newPosition == oldPosition - 9) || (newPosition == oldPosition - 7))
     {
       if (classNewPos == "sqr-tan")
       {
@@ -139,7 +180,7 @@ function tileClicked()
 {
   console.log("Clicked tile " + this.id);
 
-  if (board[this.id] == 'r' || board[this.id] == 'b') // if player clicked piece
+  if (board[this.id] == 'r' || board[this.id] == 'b' || board[this.id] == 'bk' || board[this.id] == 'rk') // if player clicked piece
   {
     // select clicked piece
     isPieceSelected = true;
