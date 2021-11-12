@@ -93,6 +93,8 @@ function movePiece(oldPosition, newPosition)
  * */
 function isMoveValid(oldPosition, newPosition)
 {
+  var selectedTileElement = document.getElementById(newPosition);
+  var classNewPos = selectedTileElement.className;
   oldPosition = parseInt(oldPosition);
   newPosition = parseInt(newPosition);
 
@@ -100,6 +102,10 @@ function isMoveValid(oldPosition, newPosition)
   {
     if ((newPosition == oldPosition - 9) || (newPosition == oldPosition - 7))
     {
+      if (classNewPos == "sqr-tan")
+      {
+        return(false);
+      }
       return(true);
     }
     else
@@ -111,6 +117,10 @@ function isMoveValid(oldPosition, newPosition)
   {
     if ((newPosition == oldPosition + 9) || (newPosition == oldPosition + 7))
     {
+      if (classNewPos == "sqr-tan")
+      {
+        return(false);
+      }
       return(true);
     }
     else
