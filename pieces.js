@@ -115,58 +115,47 @@ function movePiece(oldPosition, newPosition)
 /**
  * @author Konrad Kahnert
  * @return {bool}
- * @description Returns true if moving a piece from oldPosition to newPosition is a valid move, returns false if it is not a valid move
+ * @description Returns true if moving a piece from oldPosition to newPosition is a valid regular move, returns false if it is not a valid regular move
  * */
-function isMoveValid(oldPosition, newPosition)
+function isValidRegMove(oldPosition, newPosition)
 {
-  var selectedTileElement = document.getElementById(newPosition);
-  var classNewPos = selectedTileElement.className;
   oldPosition = parseInt(oldPosition);
   newPosition = parseInt(newPosition);
 
-  if (board[oldPosition] == 'r')
+  if (document.getElementById(newPosition).className == "sqr-brown") // if a brown square was clicked
   {
-    if ((newPosition == oldPosition - 9) || (newPosition == oldPosition - 7))
+    if (board[oldPosition] == 'r')
     {
-      if (classNewPos == "sqr-tan")
+      if ((newPosition == oldPosition - 9) || (newPosition == oldPosition - 7)) // if new pos is up 1 left 1 or up 1 right 1
+      {
+        return(true);
+      }
+      else
       {
         return(false);
       }
-      return(true);
     }
-    else
+    else if (board[oldPosition] == 'b')
     {
-      return(false);
-    }
-  }
-  else if (board[oldPosition] == 'b')
-  {
-    if ((newPosition == oldPosition + 9) || (newPosition == oldPosition + 7))
-    {
-      if (classNewPos == "sqr-tan")
+      if ((newPosition == oldPosition + 9) || (newPosition == oldPosition + 7)) // if new pos is down 1 right 1 or down 1 left 1
+      {
+        return(true);
+      }
+      else
       {
         return(false);
       }
-      return(true);
     }
-    else
+    else if (board[oldPosition] == 'rk' || board[oldPosition] == 'bk')
     {
-      return(false);
-    }
-  }
-  else if (board[oldPosition] == 'rk' || board[oldPosition] == 'bk')
-  {
-    if ((newPosition == oldPosition + 9) || (newPosition == oldPosition + 7) || (newPosition == oldPosition - 9) || (newPosition == oldPosition - 7))
-    {
-      if (classNewPos == "sqr-tan")
+      if ((newPosition == oldPosition + 9) || (newPosition == oldPosition + 7) || (newPosition == oldPosition - 9) || (newPosition == oldPosition - 7)) // if new pos is vertical to old pos and 1 space away
+      {
+        return(true);
+      }
+      else
       {
         return(false);
       }
-      return(true);
-    }
-    else
-    {
-      return(false);
     }
   }
 }
@@ -189,9 +178,10 @@ function tileClicked()
   else if (isPieceSelected == true) // if player clicked empty tile and a piece is selected
   {
     // move selected piece to empty tile
-    if (isMoveValid(selectedPiecePosition, this.id) == true)
+    if (isValidRegMove(selectedPiecePosition, this.id) == true)
     {
       movePiece(selectedPiecePosition, this.id);
     }
+    //else if (isValidJumpMove(selectedPiecePosition, this.id) == true)
   }
 }
