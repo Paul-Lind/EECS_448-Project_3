@@ -158,6 +158,10 @@ function isValidRegMove(oldPosition, newPosition)
       }
     }
   }
+  else
+  {
+    return(false);
+  }
 }
 
 /**
