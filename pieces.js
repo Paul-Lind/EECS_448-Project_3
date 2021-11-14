@@ -180,7 +180,7 @@ function isValidJumpMove(oldPosition, newPosition)
       {
         if ((board[oldPosition - 9] == 'b') || (board[oldPosition - 9] == 'bk')) // if there is a black piece up 1 left 1
         {
-          removePiece(oldPosition - 9);
+            removePiece(oldPosition - 9);
           return(true);
         }
         else
@@ -192,7 +192,7 @@ function isValidJumpMove(oldPosition, newPosition)
       {
         if ((board[oldPosition - 7] == 'b') || (board[oldPosition - 7] == 'bk')) // if there is a black piece up 1 right 1
         {
-          removePiece(oldPosition - 7);
+            removePiece(oldPosition - 7);
           return(true);
         }
         else
@@ -211,7 +211,7 @@ function isValidJumpMove(oldPosition, newPosition)
       {
         if ((board[oldPosition + 9] == 'r') || (board[oldPosition + 9] == 'rk')) // if there is a red piece down 1 right 1
         {
-          removePiece(oldPosition + 9);
+            removePiece(oldPosition + 9);
           return(true);
         }
         else
@@ -223,7 +223,7 @@ function isValidJumpMove(oldPosition, newPosition)
       {
         if ((board[oldPosition + 7] == 'r') || (board[oldPosition + 7] == 'rk')) // if there is a red piece down 1 left 1
         {
-          removePiece(oldPosition + 7);
+            removePiece(oldPosition + 7);
           return(true);
         }
         else
@@ -242,7 +242,7 @@ function isValidJumpMove(oldPosition, newPosition)
       {
         if ((board[oldPosition - 9] == 'b') || (board[oldPosition - 9] == 'bk')) // if there is a black piece up 1 left 1
         {
-          removePiece(oldPosition - 9);
+            removePiece(oldPosition - 9);
           return(true);
         }
         else
@@ -254,7 +254,7 @@ function isValidJumpMove(oldPosition, newPosition)
       {
         if ((board[oldPosition - 7] == 'b') || (board[oldPosition - 7] == 'bk')) // if there is a black piece up 1 right 1
         {
-          removePiece(oldPosition - 7);
+            removePiece(oldPosition - 7);
           return(true);
         }
         else
@@ -266,7 +266,7 @@ function isValidJumpMove(oldPosition, newPosition)
       {
         if ((board[oldPosition + 9] == 'b') || (board[oldPosition + 9] == 'bk')) // if there is a black piece down 1 right 1
         {
-          removePiece(oldPosition + 9);
+            removePiece(oldPosition + 9);
           return(true);
         }
         else
@@ -278,7 +278,7 @@ function isValidJumpMove(oldPosition, newPosition)
       {
         if ((board[oldPosition + 7] == 'b') || (board[oldPosition + 7] == 'bk')) // if there is a black piece down 1 left 1
         {
-          removePiece(oldPosition + 7);
+            removePiece(oldPosition + 7);
           return(true);
         }
         else
@@ -297,7 +297,7 @@ function isValidJumpMove(oldPosition, newPosition)
       {
         if ((board[oldPosition - 9] == 'r') || (board[oldPosition - 9] == 'rk')) // if there is a red piece up 1 left 1
         {
-          removePiece(oldPosition - 9);
+            removePiece(oldPosition - 9);
           return(true);
         }
         else
@@ -309,7 +309,7 @@ function isValidJumpMove(oldPosition, newPosition)
       {
         if ((board[oldPosition - 7] == 'r') || (board[oldPosition - 7] == 'rk')) // if there is a red piece up 1 right 1
         {
-          removePiece(oldPosition - 7);
+            removePiece(oldPosition - 7);
           return(true);
         }
         else
@@ -321,7 +321,7 @@ function isValidJumpMove(oldPosition, newPosition)
       {
         if ((board[oldPosition + 9] == 'r') || (board[oldPosition + 9] == 'rk')) // if there is a red piece down 1 right 1
         {
-          removePiece(oldPosition + 9);
+            removePiece(oldPosition + 9);
           return(true);
         }
         else
@@ -333,7 +333,7 @@ function isValidJumpMove(oldPosition, newPosition)
       {
         if ((board[oldPosition + 7] == 'r') || (board[oldPosition + 7] == 'rk')) // if there is a red piece down 1 left 1
         {
-          removePiece(oldPosition + 7);
+            removePiece(oldPosition + 7);
           return(true);
         }
         else
@@ -360,9 +360,10 @@ function isValidJumpMove(oldPosition, newPosition)
  * */
 function removePiece(position)
 {
-  var tile = document.getElementById(position);
-  tile.removeChild(tile.firstChild);
-  board[position] = 'e';
+    var tile = document.getElementById(position);
+    tile.removeChild(tile.firstChild);
+    board[position] = 'e';
+    checkWin();
 }
 
 /**
