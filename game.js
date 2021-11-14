@@ -6,6 +6,7 @@
 function checkWin() {
     let countBlack = 0;
     let countRed = 0;
+    // cycles through board and counts number of pieces for each player
     for (let i = 0; i < 63; i++) {
         if (board[i] == 'b' || board[i] == 'bk') {
             countBlack = countBlack + 1;
@@ -13,6 +14,7 @@ function checkWin() {
             countRed = countRed + 1;
         }
     }
+    // alerts player of game over if a player reaches zero pieces
     if (countBlack == 0) {
         alert("Game Over! Red wins! Refresh the page to play again.");
     }
