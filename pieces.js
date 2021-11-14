@@ -54,8 +54,6 @@ function placePieces() {
             board[i] = 'r'
         }
     }
-    console.log(board);
-    console.log(document);
 }
 
 /**
@@ -166,13 +164,214 @@ function isValidRegMove(oldPosition, newPosition)
 
 /**
  * @author Konrad Kahnert
+ * @return {bool}
+ * @description Returns true and deletes taken piece if moving a piece from oldPosition to newPosition is a valid jump move, returns false if it is not a valid jump move
+ * */
+function isValidJumpMove(oldPosition, newPosition)
+{
+  oldPosition = parseInt(oldPosition);
+  newPosition = parseInt(newPosition);
+
+  if (document.getElementById(newPosition).className == "sqr-brown") // if a brown square was clicked
+  {
+    if (board[oldPosition] == 'r')
+    {
+      if (newPosition == oldPosition - 18) // if new pos is up 2 left 2
+      {
+        if ((board[oldPosition - 9] == 'b') || (board[oldPosition - 9] == 'bk')) // if there is a black piece up 1 left 1
+        {
+          removePiece(oldPosition - 9);
+          return(true);
+        }
+        else
+        {
+          return(false);
+        }
+      }
+      else if (newPosition == oldPosition - 14) // if new pos is up 2 right 2
+      {
+        if ((board[oldPosition - 7] == 'b') || (board[oldPosition - 7] == 'bk')) // if there is a black piece up 1 right 1
+        {
+          removePiece(oldPosition - 7);
+          return(true);
+        }
+        else
+        {
+          return(false);
+        }
+      }
+      else
+      {
+        return(false);
+      }
+    }
+    else if (board[oldPosition] == 'b')
+    {
+      if (newPosition == oldPosition + 18) // if new pos is down 2 right 2
+      {
+        if ((board[oldPosition + 9] == 'r') || (board[oldPosition + 9] == 'rk')) // if there is a red piece down 1 right 1
+        {
+          removePiece(oldPosition + 9);
+          return(true);
+        }
+        else
+        {
+          return(false);
+        }
+      }
+      else if (newPosition == oldPosition + 14) // if new pos is down 2 left 2
+      {
+        if ((board[oldPosition + 7] == 'r') || (board[oldPosition + 7] == 'rk')) // if there is a red piece down 1 left 1
+        {
+          removePiece(oldPosition + 7);
+          return(true);
+        }
+        else
+        {
+          return(false);
+        }
+      }
+      else
+      {
+        return(false);
+      }
+    }
+    else if (board[oldPosition] == 'rk')
+    {
+      if (newPosition == oldPosition - 18) // if new pos is up 2 left 2
+      {
+        if ((board[oldPosition - 9] == 'b') || (board[oldPosition - 9] == 'bk')) // if there is a black piece up 1 left 1
+        {
+          removePiece(oldPosition - 9);
+          return(true);
+        }
+        else
+        {
+          return(false);
+        }
+      }
+      else if (newPosition == oldPosition - 14) // if new pos is up 2 right 2
+      {
+        if ((board[oldPosition - 7] == 'b') || (board[oldPosition - 7] == 'bk')) // if there is a black piece up 1 right 1
+        {
+          removePiece(oldPosition - 7);
+          return(true);
+        }
+        else
+        {
+          return(false);
+        }
+      }
+      if (newPosition == oldPosition + 18) // if new pos is down 2 right 2
+      {
+        if ((board[oldPosition + 9] == 'b') || (board[oldPosition + 9] == 'bk')) // if there is a black piece down 1 right 1
+        {
+          removePiece(oldPosition + 9);
+          return(true);
+        }
+        else
+        {
+          return(false);
+        }
+      }
+      else if (newPosition == oldPosition + 14) // if new pos is down 2 left 2
+      {
+        if ((board[oldPosition + 7] == 'b') || (board[oldPosition + 7] == 'bk')) // if there is a black piece down 1 left 1
+        {
+          removePiece(oldPosition + 7);
+          return(true);
+        }
+        else
+        {
+          return(false);
+        }
+      }
+      else
+      {
+        return(false);
+      }
+    }
+    else if (board[oldPosition] == 'bk')
+    {
+      if (newPosition == oldPosition - 18) // if new pos is up 2 left 2
+      {
+        if ((board[oldPosition - 9] == 'r') || (board[oldPosition - 9] == 'rk')) // if there is a red piece up 1 left 1
+        {
+          removePiece(oldPosition - 9);
+          return(true);
+        }
+        else
+        {
+          return(false);
+        }
+      }
+      else if (newPosition == oldPosition - 14) // if new pos is up 2 right 2
+      {
+        if ((board[oldPosition - 7] == 'r') || (board[oldPosition - 7] == 'rk')) // if there is a red piece up 1 right 1
+        {
+          removePiece(oldPosition - 7);
+          return(true);
+        }
+        else
+        {
+          return(false);
+        }
+      }
+      if (newPosition == oldPosition + 18) // if new pos is down 2 right 2
+      {
+        if ((board[oldPosition + 9] == 'r') || (board[oldPosition + 9] == 'rk')) // if there is a red piece down 1 right 1
+        {
+          removePiece(oldPosition + 9);
+          return(true);
+        }
+        else
+        {
+          return(false);
+        }
+      }
+      else if (newPosition == oldPosition + 14) // if new pos is down 2 left 2
+      {
+        if ((board[oldPosition + 7] == 'r') || (board[oldPosition + 7] == 'rk')) // if there is a red piece down 1 left 1
+        {
+          removePiece(oldPosition + 7);
+          return(true);
+        }
+        else
+        {
+          return(false);
+        }
+      }
+      else
+      {
+        return(false);
+      }
+    }
+  }
+  else
+  {
+    return(false);
+  }
+}
+
+/**
+ * @author Konrad Kahnert
+ * @return {void}
+ * @description removes piece at selected position from the board
+ * */
+function removePiece(position)
+{
+  var tile = document.getElementById(position);
+  tile.removeChild(tile.firstChild);
+  board[position] = 'e';
+}
+
+/**
+ * @author Konrad Kahnert
  * @return {void}
  * @description If a piece is clicked, selects the piece. If a piece is already selected and a valid empty tile piece is clicked, moves selected piece to that tile.
  * */
 function tileClicked()
 {
-  console.log("Clicked tile " + this.id);
-
   if (board[this.id] == 'r' || board[this.id] == 'b' || board[this.id] == 'bk' || board[this.id] == 'rk') // if player clicked piece
   {
     // select clicked piece
@@ -182,10 +381,9 @@ function tileClicked()
   else if (isPieceSelected == true) // if player clicked empty tile and a piece is selected
   {
     // move selected piece to empty tile
-    if (isValidRegMove(selectedPiecePosition, this.id) == true)
+    if ((isValidRegMove(selectedPiecePosition, this.id) == true) || (isValidJumpMove(selectedPiecePosition, this.id) == true))
     {
       movePiece(selectedPiecePosition, this.id);
     }
-    //else if (isValidJumpMove(selectedPiecePosition, this.id) == true)
   }
 }
