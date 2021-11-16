@@ -336,7 +336,7 @@ function test() {
                 }
             }
         }
-        //alert("Test 1: Normal Pieces only make valid moves = " + passFail)
+        alert("Test 1: Normal Pieces only make valid moves = " + passFail)
     }
 
     //Test-2 -- King pieces can only make valid regular moves
@@ -360,7 +360,7 @@ function test() {
                 }
             }
         }
-        //alert("Test 2: King pieces only make valid moves = " + passFail)
+        alert("Test 2: King pieces only make valid moves = " + passFail)
     }
 
     //Test 3 -- If there is a valid move selected then piece is moved to that position
@@ -396,7 +396,7 @@ function test() {
             passFail = "Failed";
         }
 
-        //alert("Test 3: movePiece function actually moves pieces to desired square = " + passFail);
+        alert("Test 3: movePiece function actually moves pieces to desired square = " + passFail);
 
     }
 
@@ -430,15 +430,25 @@ function test() {
         alert("Test 4: Both kings and regular pieces can jump over the opponent = " + passFail);
     }
 
-    //Test 5 -- Check win function works
+    //Test 5 -- A jumped over piece is removed from the game
     {
+        var passFail = "Failed";
+        //clear board 
+        for (let i = 0; i < 64; i++) {
+            board[i] = 'e';
+        }
 
-        //alert("Test 5: If there is no more pieces left the game is over = " + passFail);
-    }
+        //Set all pieces
+        placePieces();
 
-    //Test 6 -- A jumped over piece is removed from the game
-    {
-        //alert("Test 6: If a piece is jumped over it is removed from the game = " + passFail);
+        //setup
+        movePiece(40, 33);
+        movePiece(33, 26);
+        isValidJumpMove(19, 33);
+        if (board[26] == 'e') {
+            passFail = "Passed";
+        }
+        alert("Test 5: If a piece is jumped over it is removed from the game = " + passFail);
 
     }
 
