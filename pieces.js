@@ -388,3 +388,125 @@ function tileClicked()
     }
   }
 }
+
+
+
+/**
+ * @author Cole Guion
+ * @return {void}
+ * @description Test suite to check basic functionalities of program
+ * */
+ function test() {
+  //alert("TEST");
+
+  //Test 1 -- Regular pieces can only make valid regular moves
+  {
+    var passFail = "Passed";
+    //clear board and set one black piece on the third row in the fourth(19th) square
+    for (let i=0; i<64; i++)
+    {
+      board[i] = 'e';
+    }
+    board[19] = 'b';
+
+    //Check every space on board for valid moves
+    for (let i=0; i<64; i++)
+    {
+      if (i == 26 || i == 28)
+      {
+        if(isValidRegMove(19, i) == false)
+        {
+          passFail = "Failed";
+        }
+      }
+      else {
+        if(isValidRegMove(19, i) == true)
+        {
+          passFail = "Failed";
+        }
+      }
+    }
+    alert("Test 1: Normal Pieces only make valid moves = " + passFail)
+  }
+
+  //Test-2 -- King pieces can only make valid regular moves
+  {
+    var passFail = "Passed";
+    //clear board and set one red king piece on the third row in the fourth(19th) square
+    for (let i=0; i<64; i++)
+    {
+      board[i] = 'e';
+    }
+    board[19] = 'rk';
+
+    //Check every space on board for valid moves
+    for (let i=0; i<64; i++)
+    {
+      if (i == 26 || i == 28 || i == 10 || i == 12)
+      {
+        if(isValidRegMove(19, i) == false)
+        {
+          passFail = "Failed";
+        }
+      }
+      else {
+        if(isValidRegMove(19, i) == true)
+        {
+          passFail = "Failed";
+        }
+      }
+    }
+    alert("Test 2: King pieces only make valid moves = " + passFail)
+  }
+
+  //Test 3 -- If there is a valid move selected then piece is moved to that position
+  {
+    var passFail = "Passed";
+    //clear board and set one black king piece on the third row in the fourth(19th) square
+    for (let i=0; i<64; i++)
+    {
+      board[i] = 'e';
+    }
+    board[19] = 'bk';
+
+    //Check bottom right corner move
+    movePiece(19, 28);
+    if (board[28] == 'e')
+    {
+      passFail = "Failed";
+    }
+
+    //Check top left corner move
+    movePiece(28, 19);
+    if (board[19] == 'e')
+    {
+      passFail = "Failed";
+    }
+
+    //Check bottom left corner move
+    movePiece(19, 26);
+    if (board[26] == 'e')
+    {
+      passFail = "Failed";
+    }
+
+    //Check top right corner move
+    movePiece(26, 19);
+    if (board[19] == 'e')
+    {
+      passFail = "Failed";
+    }    
+
+    alert("Test 3: movePiece function actually moves pieces to desired square = " + passFail);
+
+  }
+
+  //Clears board for game setup after test
+  //DONT KNOW HOW TO CLEAR PIECES FROM TEST
+  /**for (let i=0; i<64; i++)
+  {
+    board[i] = 'e';
+  }
+  placePieces();
+  */
+}
