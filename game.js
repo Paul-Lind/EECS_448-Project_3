@@ -22,3 +22,62 @@ function checkWin() {
         alert("Game Over! Black wins! Refresh the page to play again.");
     }
 }
+
+/**
+ * @author Cole Guion
+ * @return {void}
+ * @description Checks at beginning of turn is no pieces are able to make a valid move resulting in a loss
+ * */
+function stalemate(pieceColor) {
+    //Cannot test this into turn switching function is implemented
+    var staleMate = true;
+
+    if(pieceColor == 'b' || pieceColor == 'bk')
+    {
+        for (let i=0; i<64; i++)
+        {
+            if (board[i] != 'e')
+            {
+                for (let j=0; j<64; j++)
+                {
+                    if(isValidRegMove(i,j) == true)
+                    {
+                        staleMate = false;
+                    }
+                    else if (isValidJumpMove(i,j) == true)
+                    {
+                        staleMate = false;
+                    }
+                }
+            }
+        }
+        if (staleMate == true)
+        {
+            alert("Game Over! Red wins! Refresh the page to play again.");
+        }
+    }
+    else if(pieceColor == 'r' || pieceColor == 'rk')
+    {
+        for (let i=0; i<64; i++)
+        {
+            if (board[i] != 'e')
+            {
+                for (let j=0; j<64; j++)
+                {
+                    if(isValidRegMove(i,j) == true)
+                    {
+                        staleMate = false;
+                    }
+                    else if (isValidJumpMove(i,j) == true)
+                    {
+                        staleMate = false;
+                    }
+                }
+            }
+        }
+        if (staleMate == true)
+        {
+            alert("Game Over! Black wins! Refresh the page to play again.");
+        }
+    }
+}
