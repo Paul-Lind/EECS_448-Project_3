@@ -501,12 +501,8 @@ function tileClicked()
 
   }
 
-  //Clears board for game setup after test
-  //DONT KNOW HOW TO CLEAR PIECES FROM TEST
-  /**for (let i=0; i<64; i++)
-  {
-    board[i] = 'e';
-  }
-  placePieces();
-  */
+  //After the test, the board is filled with faux chess pieces and I don't know how 
+  //to clear the board again so the pieces can be reset
+  //I also think we could just restart the game afer it is tested
+
 }
