@@ -1,6 +1,8 @@
 let isPieceSelected = false;
 let selectedPiecePosition;
 
+let playerTurn = 0;
+
 let board = [];
 document.addEventListener('DOMContentLoaded', () => {
     for (let i = 0; i < 64; i++) {
@@ -103,23 +105,26 @@ function isValidRegMove(oldPosition, newPosition) {
 
     if (document.getElementById(newPosition).className == "sqr-brown") // if a brown square was clicked
     {
-        if (board[oldPosition] == 'r') {
+        if (board[oldPosition] == 'r' && playerTurn%2 == 0) {
             if ((newPosition == oldPosition - 9) || (newPosition == oldPosition - 7)) // if new pos is up 1 left 1 or up 1 right 1
             {
+                playerTurn++;
                 return (true);
             } else {
                 return (false);
             }
-        } else if (board[oldPosition] == 'b') {
+        } else if (board[oldPosition] == 'b' && playerTurn % 2 != 0) {
             if ((newPosition == oldPosition + 9) || (newPosition == oldPosition + 7)) // if new pos is down 1 right 1 or down 1 left 1
             {
+                playerTurn++
                 return (true);
             } else {
                 return (false);
             }
-        } else if (board[oldPosition] == 'rk' || board[oldPosition] == 'bk') {
+        } else if (board[oldPosition] == 'rk' && playerTurn % 2 == 0 || board[oldPosition] == 'bk' && playerTurn % 2 != 0) {
             if ((newPosition == oldPosition + 9) || (newPosition == oldPosition + 7) || (newPosition == oldPosition - 9) || (newPosition == oldPosition - 7)) // if new pos is vertical to old pos and 1 space away
             {
+                playerTurn++;
                 return (true);
             } else {
                 return (false);
