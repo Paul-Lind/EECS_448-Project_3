@@ -146,12 +146,13 @@ function isValidJumpMove(oldPosition, newPosition) {
 
     if (document.getElementById(newPosition).className == "sqr-brown") // if a brown square was clicked
     {
-        if (board[oldPosition] == 'r') {
+        if (board[oldPosition] == 'r' && playerTurn % 2 == 0) {
             if (newPosition == oldPosition - 18) // if new pos is up 2 left 2
             {
                 if ((board[oldPosition - 9] == 'b') || (board[oldPosition - 9] == 'bk')) // if there is a black piece up 1 left 1
                 {
                     removePiece(oldPosition - 9);
+                    playerTurn++;
                     return (true);
                 } else {
                     return (false);
@@ -161,6 +162,7 @@ function isValidJumpMove(oldPosition, newPosition) {
                 if ((board[oldPosition - 7] == 'b') || (board[oldPosition - 7] == 'bk')) // if there is a black piece up 1 right 1
                 {
                     removePiece(oldPosition - 7);
+                    playerTurn++;
                     return (true);
                 } else {
                     return (false);
@@ -168,12 +170,13 @@ function isValidJumpMove(oldPosition, newPosition) {
             } else {
                 return (false);
             }
-        } else if (board[oldPosition] == 'b') {
+        } else if (board[oldPosition] == 'b' && playerTurn % 2 != 0) {
             if (newPosition == oldPosition + 18) // if new pos is down 2 right 2
             {
                 if ((board[oldPosition + 9] == 'r') || (board[oldPosition + 9] == 'rk')) // if there is a red piece down 1 right 1
                 {
                     removePiece(oldPosition + 9);
+                    playerTurn++;
                     return (true);
                 } else {
                     return (false);
@@ -183,6 +186,7 @@ function isValidJumpMove(oldPosition, newPosition) {
                 if ((board[oldPosition + 7] == 'r') || (board[oldPosition + 7] == 'rk')) // if there is a red piece down 1 left 1
                 {
                     removePiece(oldPosition + 7);
+                    playerTurn++;
                     return (true);
                 } else {
                     return (false);
@@ -190,12 +194,13 @@ function isValidJumpMove(oldPosition, newPosition) {
             } else {
                 return (false);
             }
-        } else if (board[oldPosition] == 'rk') {
+        } else if (board[oldPosition] == 'rk' && playerTurn % 2 == 0) {
             if (newPosition == oldPosition - 18) // if new pos is up 2 left 2
             {
                 if ((board[oldPosition - 9] == 'b') || (board[oldPosition - 9] == 'bk')) // if there is a black piece up 1 left 1
                 {
                     removePiece(oldPosition - 9);
+                    playerTurn++;
                     return (true);
                 } else {
                     return (false);
@@ -205,6 +210,7 @@ function isValidJumpMove(oldPosition, newPosition) {
                 if ((board[oldPosition - 7] == 'b') || (board[oldPosition - 7] == 'bk')) // if there is a black piece up 1 right 1
                 {
                     removePiece(oldPosition - 7);
+                    playerTurn++;
                     return (true);
                 } else {
                     return (false);
@@ -215,6 +221,7 @@ function isValidJumpMove(oldPosition, newPosition) {
                 if ((board[oldPosition + 9] == 'b') || (board[oldPosition + 9] == 'bk')) // if there is a black piece down 1 right 1
                 {
                     removePiece(oldPosition + 9);
+                    playerTurn++;
                     return (true);
                 } else {
                     return (false);
@@ -224,6 +231,7 @@ function isValidJumpMove(oldPosition, newPosition) {
                 if ((board[oldPosition + 7] == 'b') || (board[oldPosition + 7] == 'bk')) // if there is a black piece down 1 left 1
                 {
                     removePiece(oldPosition + 7);
+                    playerTurn++;
                     return (true);
                 } else {
                     return (false);
@@ -231,12 +239,13 @@ function isValidJumpMove(oldPosition, newPosition) {
             } else {
                 return (false);
             }
-        } else if (board[oldPosition] == 'bk') {
+        } else if (board[oldPosition] == 'bk' && playerTurn % 2 != 0) {
             if (newPosition == oldPosition - 18) // if new pos is up 2 left 2
             {
                 if ((board[oldPosition - 9] == 'r') || (board[oldPosition - 9] == 'rk')) // if there is a red piece up 1 left 1
                 {
                     removePiece(oldPosition - 9);
+                    playerTurn++;
                     return (true);
                 } else {
                     return (false);
@@ -246,6 +255,7 @@ function isValidJumpMove(oldPosition, newPosition) {
                 if ((board[oldPosition - 7] == 'r') || (board[oldPosition - 7] == 'rk')) // if there is a red piece up 1 right 1
                 {
                     removePiece(oldPosition - 7);
+                    playerTurn++;
                     return (true);
                 } else {
                     return (false);
@@ -256,6 +266,7 @@ function isValidJumpMove(oldPosition, newPosition) {
                 if ((board[oldPosition + 9] == 'r') || (board[oldPosition + 9] == 'rk')) // if there is a red piece down 1 right 1
                 {
                     removePiece(oldPosition + 9);
+                    playerTurn++;
                     return (true);
                 } else {
                     return (false);
@@ -265,6 +276,7 @@ function isValidJumpMove(oldPosition, newPosition) {
                 if ((board[oldPosition + 7] == 'r') || (board[oldPosition + 7] == 'rk')) // if there is a red piece down 1 left 1
                 {
                     removePiece(oldPosition + 7);
+                    playerTurn++;
                     return (true);
                 } else {
                     return (false);
