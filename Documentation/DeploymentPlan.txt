@@ -1,0 +1,18 @@
+DEPLOYMENT STEPS:
+	With our Checkers game, it would be very simple to deploy our game to a web server, such as AWS. 
+	In order to achieve this, we would need to sign up for AWS. Specifially we would want their Single Web App Hosting feature,
+	as it is a static website that only requires a single load in a web browser. This would be ideal for our Checkers game.
+	AWS Amplify Console has a free trial, but afterwards we would have to pay as we go. For instance, it would cost
+	$0.023 per GB stored per month, or $0.15 per GB served. 
+	After deciding on our web host, we would then need to register a domain name. 
+
+POTENTIAL MARKET:
+	Our potential market would be anyone and everyone. Checkers is a simple game that many of us are introduced to as young children.
+	Therefore, our game would have no defined audience as it is easily accessible. 
+
+COST TO DEPLOY:
+	As stated previously, it would cost us fractions of a dollar to deploy our game to AWS. Additionally, we would need to spend at least $7/year to keep our domain name.
+	Furthermore, our product could be adapted to be played on mobile devices, but in doing so would cost us a few hundred dollars if we were to release our game through the App Store.
+	This probably wouldn't be a viable option to be able to upload to the App Store, as I don't see us charging money to play our game. 
+	So, we would probably want to stay on the cheaper side of things and only host our game on a website.
+	Lastly, we could always implement ads into our game in order to generate revenue from people playing our game. 

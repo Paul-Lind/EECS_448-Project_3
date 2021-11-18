@@ -1,0 +1,11 @@
+PROJECTED COSTS:
+	Our game will cost relatively little to host, so we could expect to have to pay anywhere between $10-$20 for the course of one year, 
+	including domain costs. However, if we see a lot of traffic on our site, we could experience higher costs as there would be more usage.
+	To combat this, we could always implement ads into our game in order to generate revenue. 
+
+UPDATES:
+	We could implement updates to our game in order to ensure it has a long lifespan. For instance, we could implement seasonal changes to the game
+	such as a Winter update, or a Fall update, and adjust the graphics of the game accordingly. Furthermore, we could implement different game modes into our 
+	Checkers game, such as a smaller board, only King pieces, or double jumping is allowed. These small tweaks and updates would bring new life to our game,
+	and we might find success with keeping players, and also adding new players to our game. 
+	None of these updates would require additional developers to be hired, as these can all easily be managed by a small team. 
