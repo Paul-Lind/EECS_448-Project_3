@@ -1,0 +1,11 @@
+Defect Tracking
+
+Reported: 11/12/21  --  Cole Guion
+Fixed: 11/13/21  --  Konrad Kahnert
+Defect Description: In our isMoveValid() function if a piece was against the edge of the board it would be able to go to the opposite edge of the board 2 rows up into a tan square.
+Fix description: To fix this problem I made it check if the square the piece was selected to move to's class was "tan-sqr" then it would return that the move was invalid and thus not go through.
+
+Reported: 11/13/21 - Konrad Kahnert
+Fixed: 11/13/21 - Konrad Kahnert
+Defect description: brown tiles not highlighting when mouse is hovered over them
+Fix description: in style.css, hover code was specified for “sqr-red” instead of “sqr-brown”. replacing “sqr-red” with “sqr-brown” fixed the issue
